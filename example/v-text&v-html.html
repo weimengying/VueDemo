@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <script src="../assets/js/vue.min.js"></script>
+</head>
+
+<body>
+    <h1>v-text & v-html 案例</h1>
+    <hr>
+    <div id="app">
+        <span>{{message}}</span>=<span v-text="message"></span>
+        <span v-html="msgHtml"></span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                msgHtml: '<h2>Hello Vue!</h2>'
+            }
+        })
+    </script>
+
+</body>
+
+</html>

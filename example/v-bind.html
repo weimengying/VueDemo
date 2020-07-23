@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <script src="../assets/js/vue.min.js"></script>
+</head>
+<style>
+    .classA {
+        color: red;
+    }
+
+    .classB {
+        font-size: 150%;
+    }
+</style>
+
+<body>
+    <h1>v-bind 处理HTML中的标签属性的</h1>
+    <div id="app">
+        <img :src="imgSrc" alt="">
+        <div :class="className">1.绑定class</div>
+        <div :class="{classA:isOk}">2. 绑定class中的判断</div>
+        <div :class="[classA,classB]">3、绑定class中的数组</div>
+        <div :class="isOk?classA:classB">4、绑定class中的三元表达式判断</div>
+        <div :style="styleObject">6、用对象绑定style样式</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                imgSrc: 'https://element.eleme.cn/static/qrcode.a88f522.png',
+                className: 'classB',
+                isOk: true,
+                classA: 'classA',
+                classB: 'classB',
+                styleObject: {
+                    fontSize: '24px',
+                    color: 'green'
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

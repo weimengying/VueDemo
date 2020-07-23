@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <script src="../assets/js/vue.min.js"></script>
+</head>
+
+<body>
+    <h1>v-for实例</h1>
+    <div id="app">
+        <ul>
+            <li v-for="item in sortItems">
+                {{item}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="student in sortStudent">
+                {{student.name}}-{{student.age}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: [20, 23, 18, 65, 32, 19, 5, 56, 41],
+                students: [
+                    { name: 'jsPang', age: 31 },
+                    { name: 'Panda', age: 30 },
+                    { name: 'PandAN', age: 11 },
+                    { name: 'King', age: 45 },
+                ]
+
+            },
+            computed: {
+                // 在computed里新声明一个对象，如果不重新声明会污染原来的数据源，这是vue不允许的，所以需要重新声明一个对象，但是在上面循环的时候，要改变循环的对象
+                sortItems: function () {
+                    return this.items.sort(sortNum);
+                },
+                sortStudent: function () {
+                    return sortByKey(this.students, 'age')
+                }
+            }
+        })
+        function sortNum(a, b) {
+            return a - b;
+        }
+        //数组对象方法排序：
+        function sortByKey(array, key) {
+            return array.sort(function (a, b) {
+                var x = a[key];
+                var y = b[key];
+                return ((x < y) ? -1 : (x > y) ? 1 : 0)
+            })
+        }
+    </script>
+
+</body>
+
+</html>
